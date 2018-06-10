@@ -14,18 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
-from django.urls import path, include
+from django.urls import include
 from django.conf.urls import url
 from django.contrib import admin
 from rest_framework.documentation import include_docs_urls
 
-from django_api_rest import views
-
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('docs/', include_docs_urls(title='Todo API', description='RESTful API for Todo')),
-    path('projects/', include('projects.urls')),
-
-    # url(r'^$', views.api_root),
-    # /url(r'^', include('projects.urls', namespace='projects')),
+    url('docs/', include_docs_urls(title='API REST Documents', description='RESTful API Docuementation')),
+    url('projects/', include('projects.urls')),
 ]
