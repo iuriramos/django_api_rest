@@ -9,11 +9,13 @@ class ProjectService():
         serializer = ProjectSerializer(instance=instance, many=True)
         return serializer.data
 
+
     @classmethod
     def get(cls, model, id):
         instance = model.objects.get(pk=id)
         serializer = ProjectSerializer(instance=instance, many=False)
         return serializer.data
+
 
     @classmethod
     def create(cls, model, attributes):
@@ -43,6 +45,7 @@ class ProjectService():
         serializer = ProjectSerializer(instance=instance, many=False)
 
         return serializer.data
+
 
     @classmethod
     def destroy(cls, model, id):
