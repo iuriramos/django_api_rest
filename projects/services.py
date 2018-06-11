@@ -60,11 +60,14 @@ class Response():
         self.__success__ = success
         self.__status__  = status
 
+
     def get_content(self):
         return self.__content
 
+
     def get_success(self):
         return self.__content
+
 
     def get_status(self):
         return self.__content
