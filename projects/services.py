@@ -1,16 +1,19 @@
+from .serializers import ProjectSerializer
 import json
 
 class ProjectService():
 
     @classmethod
     def all(cls, model):
-        return model.objects.all()
-
+        instance = model.objects.all()
+        serializer = ProjectSerializer(instance=instance, many=True)
+        return serializer.data
 
     @classmethod
     def get(cls, model, id):
-        return model.objects.get(pk=id)
-
+        instance = model.objects.get(pk=id)
+        serializer = ProjectSerializer(instance=instance, many=False)
+        return serializer.data
 
     @classmethod
     def create(cls, model, attributes):
@@ -22,7 +25,9 @@ class ProjectService():
             setattr(instance, key, json_object[key])
 
         instance.save()
-        return instance
+        serializer = ProjectSerializer(instance=instance, many=False)
+
+        return serializer.data
 
 
     @classmethod
@@ -35,7 +40,9 @@ class ProjectService():
             setattr(instance, key, json_object[key])
 
         instance.save()
-        return instance
+        serializer = ProjectSerializer(instance=instance, many=False)
+
+        return serializer.data
 
     @classmethod
     def destroy(cls, model, id):
@@ -46,9 +53,9 @@ class ProjectService():
 class Response():
     
     def __init__(self, content, success, status):
-        self.__content = content
-        self.__success = success
-        self.__status = status
+        self.__content__ = content
+        self.__success__ = success
+        self.__status__  = status
 
     def get_content(self):
         return self.__content
