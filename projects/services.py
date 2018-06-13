@@ -53,21 +53,16 @@ class ProjectService():
         return instance.delete()
 
 
-class Response():
+class ResponseService():
     
-    def __init__(self, content, success, status):
-        self.__content__ = content
+    def __init__(self, data, success):
+        self.__data__ = data
         self.__success__ = success
-        self.__status__  = status
 
 
-    def get_content(self):
-        return self.__content
+    def get_data(self):
+        return self.__data__
 
 
     def get_success(self):
-        return self.__content
-
-
-    def get_status(self):
-        return self.__content
+        return self.__success__
